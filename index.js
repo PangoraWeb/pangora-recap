@@ -39,15 +39,15 @@ app.get("/recap/:input", async (req, res) => {
     const input = req.params.input;
     if (!input.includes("@")) throw new Error("invalid input");
     const [name, site] = input.split("@");
-    const client = new SublinksClient(site);
+    const client = new SublinksClient(site.trim());
     const user = await client.getPersonDetails({
-      username: name,
+      username: name.trim(),
       sort: "TopAll",
       limit: 50,
     });
 
     const user2 = await client.getPersonDetails({
-      username: name,
+      username: name.trim(),
       sort: "TopAll",
       limit: 50,
       page: 2,
@@ -206,15 +206,15 @@ app.get("/recap/:input", async (req, res) => {
         "Your posts usually have a lot of score relative to comments";
     }
 
-    // wizard - in the top 1% of commenters
-    if (rank2 <= total * 0.01) {
+    // wizard - in the top 10% of commenters
+    if (rank2 <= total * 0.1) {
       role = "wizard";
-      role_description = "You are in the top 1% of commenters";
+      role_description = "You are in the top 10% of commenters";
     }
-    // vanguard - in the top 1% of posters
-    if (rank <= total * 0.01) {
+    // vanguard - in the top 10% of posters
+    if (rank <= total * 0.1) {
       role = "vanguard";
-      role_description = "You are in the top 1% of posters";
+      role_description = "You are in the top 10% of posters";
     }
 
     // exporer - top posts and comments include 40 different communities
@@ -224,29 +224,29 @@ app.get("/recap/:input", async (req, res) => {
         "Your top 100 posts and comments include 40 different communities";
     }
 
-    // adventurer - top posts and comments include 8 different sites
-    if (sites.length >= 8) {
+    // adventurer - top posts and comments include 9 different sites
+    if (sites.length >= 9) {
       role = "adventurer";
       role_description =
-        "Your top 100 posts and comments include 8 different sites";
+        "Your top 100 posts and comments include 9 different sites";
     }
 
     // sage - top 0.1%
-    if (rank2 <= total * 0.001) {
+    if (rank2 <= total * 0.01) {
       role = "sage";
-      role_description = "You are in the top 0.1% of commenters";
+      role_description = "You are in the top 1% of commenters";
     }
 
     // chamption - top 0.1%
-    if (rank <= total * 0.001) {
+    if (rank <= total * 0.01) {
       role = "champion";
-      role_description = "You are in the top 0.1% of posters";
+      role_description = "You are in the top 1% of posters";
     }
 
     // legend - top 0.01% of posts or comments
-    if (rank <= total * 0.0001 || rank2 <= total * 0.0001) {
+    if (rank <= total * 0.001 || rank2 <= total * 0.001) {
       role = "legend";
-      role_description = "You are in the top 0.01% of posters or commenters";
+      role_description = "You are in the top 0.1% of posters or commenters";
     }
 
     const canvas = createCanvas(640, 360);
