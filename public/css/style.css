@@ -546,6 +546,10 @@ select {
     max-width: 50%;
   }
 
+  p {
+    max-width: 70%;
+  }
+
   .post-content {
     p:nth-child(2) {
       color: #38b7b5;

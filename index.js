@@ -305,6 +305,13 @@ app.get("/recap/:input", async (req, res) => {
     // get instance from user's ap_id
     const [_, __, instance] = user.person_view.person.actor_id.split("/");
 
+    let message_from_admins = "";
+
+    if (instance == "programming.dev") {
+      message_from_admins =
+        "Thanks for being a part of the instance for the past year! ❤️ We have some new things getting made that should be releasing this year such as a better status page and a team page, as well as things like programming challenges and events with people from all instances";
+    }
+
     ctx.font = "bold 30px sans-serif";
     ctx.fillStyle = "black";
     ctx.fillText(
@@ -463,6 +470,7 @@ app.get("/recap/:input", async (req, res) => {
         final_card: "data:image/png;base64," + buffer.toString("base64"),
         role,
         role_description,
+        message_from_admins,
       })
     );
   } catch (err) {
