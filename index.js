@@ -262,7 +262,7 @@ app.get("/recap/:input", async (req, res) => {
       "public/images/aurora.jpg",
       "public/images/thunderstorm.jpg",
     ];
-    const bg = await loadImage(backgrounds[Math.floor(Math.random() * 5)]);
+    const bg = await loadImage(backgrounds[Math.floor(Math.random() * 8)]);
     ctx.drawImage(bg, 0, 0, 640, 360);
 
     // Black square with rounded corners around top stats
@@ -292,11 +292,13 @@ app.get("/recap/:input", async (req, res) => {
     // AVATAR
     if (user.person_view.person.avatar) {
       ctx.save();
-      const img = await loadImage(user.person_view.person.avatar);
-      ctx.beginPath();
-      ctx.arc(65, 75, 45, 0, Math.PI * 2);
-      ctx.clip();
-      ctx.drawImage(img, 20, 30, 90, 90);
+      try {
+        const img = await loadImage(user.person_view.person.avatar);
+        ctx.beginPath();
+        ctx.arc(65, 75, 45, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(img, 20, 30, 90, 90);
+      } catch (e) {}
       ctx.restore();
     }
 
@@ -474,6 +476,7 @@ app.get("/recap/:input", async (req, res) => {
       })
     );
   } catch (err) {
+    console.log(err);
     res.send(pug.renderFile("views/error-find.pug"));
   }
 });
