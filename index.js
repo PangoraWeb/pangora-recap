@@ -42,13 +42,13 @@ app.get("/recap/:input", async (req, res) => {
     const client = new SublinksClient(site.trim());
     const user = await client.getPersonDetails({
       username: name.trim(),
-      sort: "TopAll",
+      sort: "TopYear",
       limit: 50,
     });
 
     const user2 = await client.getPersonDetails({
       username: name.trim(),
-      sort: "TopAll",
+      sort: "TopYear",
       limit: 50,
       page: 2,
     });
