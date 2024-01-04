@@ -473,6 +473,7 @@ app.get("/recap/:input", async (req, res) => {
         role,
         role_description,
         message_from_admins,
+        input,
       })
     );
   } catch (err) {

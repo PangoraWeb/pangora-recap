@@ -14,10 +14,12 @@ window.onpageshow = function () {
   document.getElementById("content").classList.remove("fadeout");
 };
 
-function copyMarkdown(role) {
+function copyMarkdown(role, user) {
   var link = `https://badges.pangora.social/api/v1/recap/2023/${role}`;
+  var recapLink = `https://recap.pangora.social/recap/${user}`;
   var markdown = `![${role}](${link})`;
-  navigator.clipboard.writeText(markdown);
+  var recapMarkdown = `[${markdown}](${recapLink})`;
+  navigator.clipboard.writeText(recapMarkdown);
 
   Toastify({
     text: `Markdown copied to clipboard!`,

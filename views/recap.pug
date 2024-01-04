@@ -73,7 +73,7 @@ html(lang='en')
             p #{role[0].toUpperCase()}#{role.slice(1)}: #{role_description}
             div(hx-get=`https://badges.pangora.social/api/v1/recap/2023/${role}` hx-trigger='load')
                 p Loading...
-            button(onclick=`copyMarkdown("${role}")`) Copy Markdown
+            button(onclick=`copyMarkdown("${role}", "${input}")`) Copy Markdown
         .category
           h2 Final Card
           img(src=final_card width=640 height=360)
