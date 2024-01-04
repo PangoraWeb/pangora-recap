@@ -1,0 +1,26 @@
+doctype html
+html(lang='en')
+  head
+    title Pangora Recap
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='View a recap of what you did for the past year')
+    link(rel='stylesheet', href='/css/style.css')
+
+    script(type="text/javascript" src='/js/particles.min.js' defer)
+    script(type="text/javascript" src='/js/app.js' defer)
+  
+  body
+    include partials/nav.pug
+    #content
+      #particles-js
+      main.center.spread
+        h1 RECAP
+        p View a recap of what you did for the past year!
+        form(action='/', method='post')
+          .input
+            label(for='site') User name
+            input(type='text', id='user', name='user', placeholder='ategon' required)
+          .input
+            label(for='site') Site domain
+            input(type='text', id='site', name='site', placeholder='programming.dev' required)
+          button(type='submit') Submit

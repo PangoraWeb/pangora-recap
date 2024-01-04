@@ -1,0 +1,562 @@
+/* =============================================================================
+   CSS RESET
+   ========================================================================== */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+li {
+  list-style: none;
+}
+nav ul {
+  list-style: none;
+}
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+/* =============================================================================
+   TEMPLATE
+   ========================================================================== */
+
+body {
+  background-image: linear-gradient(
+    to top right,
+    rgb(3, 17, 23),
+    rgb(0, 0, 0),
+    rgb(22, 3, 22)
+  );
+  color: white;
+  background-attachment: fixed;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#content {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#content.fadeout {
+  animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+h1 {
+  background: linear-gradient(90deg, #86b738, #b7ab38);
+  background-clip: text;
+  color: transparent;
+  font-size: 2rem;
+}
+
+h2 {
+  background: linear-gradient(90deg, #439b36, #9b7936);
+  background-clip: text;
+  color: transparent;
+  font-size: 1.75rem;
+}
+
+h3 {
+  background: linear-gradient(90deg, #3b8b35, #8b6c35);
+  background-clip: text;
+  color: transparent;
+  font-size: 1.5rem;
+}
+
+h4 {
+  background: linear-gradient(90deg, #2f7e34, #7e6234);
+  background-clip: text;
+  color: transparent;
+  font-size: 1.25rem;
+}
+
+h5 {
+  background: linear-gradient(90deg, #2a7332, #735a32);
+  background-clip: text;
+  color: transparent;
+  font-size: 1rem;
+}
+
+h6 {
+  background: linear-gradient(90deg, #256631, #634b32);
+  background-clip: text;
+  color: transparent;
+  font-size: 0.875rem;
+}
+
+#particles-js {
+  z-index: -1;
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  z-index: 1;
+  height: 50px;
+
+  a,
+  label {
+    color: white;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    transition: color 0.2s ease;
+  }
+
+  /* P.D Branding */
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    gap: 1rem;
+    color: white;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    &:hover {
+      background-color: rgb(0, 0, 0);
+      color: gray;
+      cursor: pointer;
+    }
+  }
+
+  /* Navbar Buttons */
+  .nav-body {
+    display: flex;
+    align-items: stretch;
+    list-style-type: none;
+    margin: 0;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    svg.lemmy {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    li {
+      display: none;
+      height: 100%;
+      color: white;
+
+      &:hover {
+        background-color: rgb(0, 0, 0);
+
+        a {
+          color: gray;
+        }
+
+        label {
+          cursor: pointer;
+        }
+
+        .navicon,
+        .navicon:before,
+        .navicon:after {
+          background-color: gray;
+        }
+      }
+    }
+
+    .navicon {
+      background-color: white;
+      display: block;
+      position: relative;
+      width: 18px;
+      height: 2px;
+    }
+    .navicon:before,
+    .navicon:after {
+      background-color: white;
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .navicon:before {
+      top: 5px;
+    }
+    .navicon:after {
+      bottom: 5px;
+    }
+
+    /* Show or hide navbar elements at different screen sizes */
+    .nav-hamburger,
+    .nav-login {
+      display: block;
+    }
+
+    @media (min-width: 640px) {
+      .nav-home,
+      .nav-lemmy,
+      .nav-github {
+        display: block;
+      }
+    }
+  }
+}
+
+/* HAMBURGER */
+
+.menu {
+  position: absolute;
+  max-height: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    color: white;
+
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 0 1rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    :hover {
+      color: gray;
+      cursor: pointer;
+    }
+  }
+
+  transition: max-height 0.5s ease-out;
+
+  /* Show or hide ham elements at different screen sizes */
+  @media (min-width: 640px) {
+    .ham-home,
+    .ham-lemmy,
+    .ham-github {
+      display: none;
+    }
+  }
+}
+
+#hamburger-toggle {
+  position: absolute;
+  top: -100%;
+  left: -100%;
+}
+
+.hamburger-toggle:checked ~ .menu {
+  max-height: 200px;
+
+  @media (min-width: 640px) {
+    max-height: 80px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+button {
+  border: none;
+  background: #11111157;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
+  color: white;
+
+  &:hover {
+    background: linear-gradient(90deg, #6e6e6e, #4e4e4e);
+    transform: scale(1.2);
+  }
+
+  &:active {
+    background: linear-gradient(90deg, #313131, #111111);
+    transform: scale(0.9);
+  }
+}
+
+.url-form {
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  input[type="color"] {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+
+    &:hover {
+      background: linear-gradient(90deg, #6e6e6e, #4e4e4e);
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    &:focus {
+      border: none;
+    }
+  }
+
+  input[type="text"] {
+    width: 6rem;
+  }
+}
+
+select {
+  border: 1px solid #86b738;
+  border-radius: 5px;
+  background: transparent;
+  color: #86b738;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    border: 1px solid #becd33;
+    color: #becd33;
+  }
+
+  option {
+    color: #000000;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  color: #86b738;
+
+  input {
+    border: 1px solid #86b738;
+    border-radius: 5px;
+    background: transparent;
+    color: #86b738;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      border: 1px solid #becd33;
+      color: #becd33;
+    }
+  }
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.spread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* =============================================================================
+   CUSTOM
+   ========================================================================== */
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 0;
+
+  h2 {
+    padding: 2rem 0;
+  }
+
+  h3 {
+    padding: 1rem 0;
+  }
+
+  a {
+    color: #86b738;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: #becd33;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  li {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    text-align: left;
+    padding: 2rem 8rem;
+    border: 1px dashed #86b738;
+    border-radius: 1rem;
+    max-width: 50%;
+  }
+
+  .post-content {
+    p:nth-child(2) {
+      color: #38b7b5;
+    }
+
+    p:nth-child(3) {
+      color: #b73886;
+    }
+
+    p:nth-child(4) {
+      color: #a1a1a1;
+    }
+  }
+}

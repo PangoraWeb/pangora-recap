@@ -1,0 +1,21 @@
+{
+  "author": "Ategon",
+  "name": "pangora-recap",
+  "version": "1.0.0",
+  "description": "Pangora Recap",
+  "main": "index.js",
+  "license": "AGPL-3.0",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.44",
+    "canvas": "^2.11.2",
+    "commander": "^11.1.0",
+    "express": "^4.18.2",
+    "pug": "^3.0.2",
+    "sqlite3": "^5.1.7-rc.0",
+    "sublinks-js-client": "^0.0.3"
+  },
+  "type": "module"
+}

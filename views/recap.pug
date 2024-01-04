@@ -1,0 +1,84 @@
+doctype html
+html(lang='en')
+  head
+    title #{name}'s Recap
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='View a recap of what you did for the past year')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css')
+
+    script(type="text/javascript" src='https://unpkg.com/htmx.org@1.9.9' defer)
+    script(type="text/javascript" src='https://cdn.jsdelivr.net/npm/toastify-js' defer)
+    script(type="text/javascript" src='/js/particles.min.js' defer)
+    script(type="text/javascript" src='/js/app.js' defer)
+  
+  body
+    include partials/nav.pug
+    #content
+      #particles-js
+      main
+        .category
+          h1 #{name}'s Recap
+          p A recap of what you did for the past year!
+        if posts > 0
+          .category
+            h2 Posts
+            p You created #{posts} posts last year!
+            p Your top 100 posts were sent to #{post_communities} communities and #{post_sites} sites!
+            h3 Top 5 Posts
+            ul
+              each post in top_posts
+                li
+                  if post.post.thumbnail_url
+                    img(src=post.post.thumbnail_url width=90 height=90)
+                  .post-content
+                    a(href=post.post.ap_id) #{post.post.name}
+                    p #{post.counts.score} points
+                    p #{post.counts.comments} comments
+                    p #{new Date(post.post.published).toDateString()} creation date
+                    a(href=post.community.actor_id) #{post.community.name}
+        if comments > 0
+          .category
+            h2 Comments
+            p You created #{comments} comments last year!
+            p Your top 100 comments were sent to #{comment_communities} communities and #{comment_sites} sites!
+            h3 Top 5 Comments
+            ul
+              each comment in top_comments
+                li
+                  .post-content
+                    a(href=comment.comment.ap_id) #{comment.comment.content}
+                    p #{comment.counts.score} points
+                    p #{new Date(comment.comment.published).toDateString()} creation date
+        if total_communities > 0
+          .category
+            h2 Communities
+            p You participated in #{total_communities} communities in your top 100 posts and comments last year!
+            h3 Top 5 Communities
+            ul
+              each community in communities
+                li
+                  if community.data.icon 
+                    img(src=community.data.icon width=90 height=90)
+                  .post-content
+                    a(href=community.data.actor_id) #{community.data.name}
+                    p #{community.count} Posts/Comments in top 100
+        if message_from_admins
+          .category
+            h2 Message from your Admins
+            p #{message_from_admins}
+        if role
+          .category
+            h2 Your Role
+            p #{role[0].toUpperCase()}#{role.slice(1)}: #{role_description}
+            div(hx-get=`https://badges.pangora.social/api/v1/recap/2023/${role}` hx-trigger='load')
+                p Loading...
+            button(onclick=`copyMarkdown("${role}")`) Copy Markdown
+        .category
+          h2 Final Card
+          img(src=final_card width=640 height=360)
+          a(href=final_card download) Download Image
+          
+          
+
+        

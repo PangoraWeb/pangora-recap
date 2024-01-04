@@ -1,0 +1,23 @@
+input#hamburger-toggle.hamburger-toggle(type='checkbox' name='hamburger-toggle')
+nav.menu(aria-label='Hamburger Menu')
+  ul.menu-links 
+    li.ham-home
+      a(href='https://pangora.social') 
+        include ../icons/home.pug
+        p Home 
+    li.ham-lemmy
+      a(href='https://programming.dev/c/pangora') 
+        include ../icons/lemmy.pug
+        p Lemmy 
+    li.ham-github
+      a(href='https://github.com/programming-dot-dev/pangora-recap') 
+        include ../icons/github.pug
+        p GitHub 
+    li.ham-bots
+      a(href='https://bots.pangora.social')
+        include ../icons/bot.pug
+        p Bots 
+    li.ham-badges
+      a(href='https://badges.pangora.social')
+        include ../icons/award.pug
+        p Badges

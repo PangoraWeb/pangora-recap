@@ -1,0 +1,22 @@
+header
+  nav.navbar(aria-label='Navbar')
+    a.nav-brand(href='/')
+      p Pangora
+    ul.nav-body
+      li.nav-home
+        a(href='https://pangora.social') Home 
+      li.nav-bots
+        a(href='https://bots.pangora.social') Bots 
+      li.nav-badges
+        a(href='https://badges.pangora.social') Badges
+      li.nav-lemmy
+        a(href='https://programming.dev/c/pangora')
+          include ../icons/lemmy.pug
+      li.nav-github
+        a(href='https://github.com/programming-dot-dev/pangora-recap')
+          include ../icons/github.pug
+      li.nav-hamburger
+        label.hamburger-icon(for='hamburger-toggle')
+          span.navicon(aria-label="Hamburger Menu Icon")
+  include nav-hamburger.pug
+        
