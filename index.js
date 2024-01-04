@@ -153,7 +153,10 @@ app.get("/recap/:input", async (req, res) => {
       role_description = "You haven't posted or commented yet";
     }
     // rookie - account age < 1 month
-    else if (user.person_view.person.created_at > Date.now() - 2592000000) {
+    else if (
+      new Date(user.person_view.person.created_at) >
+      Date.now() - 2592000000
+    ) {
       role = "rookie";
       role_description =
         "You are new to lemmy! You joined less than a month ago";
