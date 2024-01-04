@@ -338,11 +338,11 @@ app.get("/recap/:input", async (req, res) => {
     // communities, sites, rank. in between posts and comments and recap text
     ctx.font = "20px sans-serif";
     ctx.fillStyle = "black";
-    ctx.fillText(`${communities.length} communities`, 270, 92);
-    ctx.fillText(`${sites.length} sites`, 270, 118);
+    ctx.fillText(`${communities.length} communities`, 280, 92);
+    ctx.fillText(`${sites.length} sites`, 280, 118);
     ctx.fillStyle = "#a1a1a1";
-    ctx.fillText(`${communities.length} communities`, 268, 90);
-    ctx.fillText(`${sites.length} sites`, 268, 116);
+    ctx.fillText(`${communities.length} communities`, 278, 90);
+    ctx.fillText(`${sites.length} sites`, 278, 116);
 
     // PANGORA RECAP TEXT (on right) rotated a bit
     ctx.save();
