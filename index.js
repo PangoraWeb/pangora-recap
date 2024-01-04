@@ -225,7 +225,7 @@ app.get("/recap/:input", async (req, res) => {
     }
 
     // adventurer - top posts and comments include 8 different sites
-    if (post_sites >= 8) {
+    if (sites.length >= 8) {
       role = "adventurer";
       role_description =
         "Your top 100 posts and comments include 8 different sites";
