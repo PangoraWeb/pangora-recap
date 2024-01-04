@@ -386,7 +386,7 @@ app.get("/recap/:input", async (req, res) => {
         const [_, __, instance, ___, name] =
           communities[i].data.actor_id.split("/");
 
-        ctx.font = "bold 15px sans-serif";
+        ctx.font = "15px sans-serif";
         ctx.fillStyle = "black";
         ctx.fillText(name, 50, 217 + i * 30);
         ctx.fillStyle = "#61ff91";
