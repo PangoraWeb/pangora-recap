@@ -154,7 +154,7 @@ app.get("/recap/:input", async (req, res) => {
     }
     // rookie - account age < 1 month
     else if (
-      new Date(user.person_view.person.created_at) >
+      new Date(user.person_view.person.created_at).getTime() >
       Date.now() - 2592000000
     ) {
       role = "rookie";
