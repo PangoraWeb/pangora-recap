@@ -499,6 +499,11 @@ select {
    CUSTOM
    ========================================================================== */
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .category {
   display: flex;
   flex-direction: column;
@@ -540,10 +545,26 @@ select {
     gap: 0.5rem;
     align-items: center;
     text-align: left;
-    padding: 2rem 8rem;
+    padding: 2rem 2rem;
     border: 1px dashed #86b738;
     border-radius: 1rem;
     max-width: 50%;
+    font-size: 0.75rem;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    @media (min-width: 640px) {
+      padding: 2rem 8rem;
+      font-size: 1rem;
+
+      img {
+        width: 6rem;
+        height: 6rem;
+      }
+    }
   }
 
   p {

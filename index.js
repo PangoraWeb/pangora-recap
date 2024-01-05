@@ -290,6 +290,7 @@ app.get("/recap/:input", async (req, res) => {
     ctx.globalAlpha = 1;
 
     // AVATAR
+    let offset = -100;
     if (user.person_view.person.avatar) {
       ctx.save();
       try {
@@ -300,6 +301,7 @@ app.get("/recap/:input", async (req, res) => {
         ctx.drawImage(img, 20, 30, 90, 90);
       } catch (e) {}
       ctx.restore();
+      offset = 0;
     }
 
     // DISPLAY NAME
@@ -318,13 +320,13 @@ app.get("/recap/:input", async (req, res) => {
     ctx.fillStyle = "black";
     ctx.fillText(
       user.person_view.person.display_name || user.person_view.person.name,
-      122,
+      122 + offset,
       62
     );
     ctx.fillStyle = "#61ff91";
     ctx.fillText(
       user.person_view.person.display_name || user.person_view.person.name,
-      120,
+      120 + offset,
       60
     );
 
@@ -341,20 +343,20 @@ app.get("/recap/:input", async (req, res) => {
     // POSTS AND COMMENTS
     ctx.font = "20px sans-serif";
     ctx.fillStyle = "black";
-    ctx.fillText(`${posts} posts`, 122, 92);
-    ctx.fillText(`${comments} comments`, 122, 118);
+    ctx.fillText(`${posts} posts`, 122 + offset, 92);
+    ctx.fillText(`${comments} comments`, 122 + offset, 118);
     ctx.fillStyle = "#a1a1a1";
-    ctx.fillText(`${posts} posts`, 120, 90);
-    ctx.fillText(`${comments} comments`, 120, 116);
+    ctx.fillText(`${posts} posts`, 120 + offset, 90);
+    ctx.fillText(`${comments} comments`, 120 + offset, 116);
 
     // communities, sites, rank. in between posts and comments and recap text
     ctx.font = "20px sans-serif";
     ctx.fillStyle = "black";
-    ctx.fillText(`${communities.length} communities`, 280, 92);
-    ctx.fillText(`${sites.length} sites`, 280, 118);
+    ctx.fillText(`${communities.length} communities`, 280 + offset, 92);
+    ctx.fillText(`${sites.length} sites`, 280 + offset, 118);
     ctx.fillStyle = "#a1a1a1";
-    ctx.fillText(`${communities.length} communities`, 278, 90);
-    ctx.fillText(`${sites.length} sites`, 278, 116);
+    ctx.fillText(`${communities.length} communities`, 278 + offset, 90);
+    ctx.fillText(`${sites.length} sites`, 278 + offset, 116);
 
     // PANGORA RECAP TEXT (on right) rotated a bit
     ctx.save();
