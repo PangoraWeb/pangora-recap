@@ -391,7 +391,16 @@ app.get("/recap/:input", async (req, res) => {
       if (communities[i]) {
         if (communities[i].data.icon) {
           try {
-            const img = await loadImage(communities[i].data.icon);
+            // only let it load for 2 seconds, if it passes that continues
+            const timeoutPromise = new Promise((resolve, reject) => {
+              setTimeout(() => {
+                resolve();
+              }, 2000);
+            });
+
+            const imgPromise = loadImage(communities[i].data.icon);
+            const img = await Promise.race([imgPromise, timeoutPromise]);
+            timeoutPromise.st;
             ctx.drawImage(img, 20, 200 + i * 30, 20, 20);
           } catch (e) {}
         }
